@@ -3,9 +3,12 @@
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import styles from './ProjectCard.module.css'; 
+import { Link } from 'react-router-dom';
 
 function ProjectCard (props) {
-  return (<Card>
+  return (
+    <Link to={`/project/${props.id}`} >
+  <Card>
     <Card.Img variant="left" src="https://placehold.co/310x160" />
     <Card.Body>
       <Card.Title>{props.title}</Card.Title>
@@ -15,7 +18,8 @@ function ProjectCard (props) {
     <Card.Footer>
       { props.tags.map((tag) => ( <Badge bg="primary" pill className={styles.projectBadge}>{tag}</Badge> ) ) }
     </Card.Footer>
-  </Card>)
+  </Card>
+  </Link>)
 };
 
 
