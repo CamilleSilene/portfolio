@@ -1,8 +1,11 @@
+import AboutMe from "../components/about/AboutMe";
+import Project from "../components/project/Projects";
 
 function Home( ) {
     return (
         <div className="container-fluid">
-            <h1>Home</h1>
+            <AboutMe />
+            <Project />
         </div>
     );
 }
