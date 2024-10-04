@@ -1,0 +1,91 @@
+[
+	{
+	  "id": "1",
+	  "title": "Booki - Agence de voyage",
+	  "slug": "booki",
+	  "description": "Création d'un site statique responsive avec HTML5 et CSS3",
+      "github": "https://github.com/CamilleSilene/Projet-2-Booki.git",
+      "link":"",
+	  "tags": [
+		"HTML5",
+		"CSS3",
+        "Responsive",
+        "Frontend"
+	  ]
+    },
+
+    {
+        "id": "2",
+        "title": "Sophie Bluel - Architecte d'intérieur",
+        "slug": "bluel",
+        "description": "Création d'un site dynamique avec système d'authentification utilisateur",
+        "github": "https://github.com/CamilleSilene/Portfolio-architecte-sophie-bluel.git",
+        "link":"",
+        "tags": [
+          "Javascript",
+          "API",
+          "Frontend"
+        ]
+      },
+
+      {
+        "id": "3",
+        "title": "Nina Carducci - Photographe",
+        "slug": "nina",
+        "description": "Débogage et optimisation de l'accessibilité d'un site web. Amélioration des performances, ajout de balises pour le référencement et pour l'accessibilité.",
+        "github": "https://github.com/CamilleSilene/Nina-Carducci.git",
+        "link":"",
+        "tags": [
+          "SEO",
+          "Accessibilité",
+          "Référencement",
+          "Débogage"
+        ]
+      },
+
+      {
+        "id": "4",
+        "title": "KASA - Agence de location immobilière",
+        "slug": "kasa",
+        "description": "Création d'un site dynamique avec animations SASS",
+        "github": "https://github.com/CamilleSilene/projet5-kasa.git",
+        "link":"",
+        "tags": [
+          "REACT",
+          "SASS",
+          "Frontend"          
+        ]
+      },
+
+      {
+        "id": "5",
+        "title": "Mon Vieux Grimoire - Site de notation de livres",
+        "slug": "grimoire",
+        "description": "Création d'un backend avec authentification des utilisateurs et système de notation",
+        "github": "https://github.com/CamilleSilene/projet-6-Backend.git",
+        "link":"",
+        "tags": [
+          "Express.JS",
+          "Node.JS",
+          "MongoDB",
+          "MVC",
+          "CRUD",
+          "GreenCode"
+        ]
+      },
+
+      {
+        "id": "6",
+        "title": "Menu-Maker",
+        "slug": "mmaker",
+        "description": "Analyse des besoins d'un client et proposition de solutions.",
+        "github": "https://github.com/CamilleSilene/Projet-7-Menu-Maker.git",
+        "link":"",
+        "tags": [
+          "Veille techno",
+          "Specifications tech",
+          "Agile",
+          "SCRUM"
+        ]
+      }
+]
