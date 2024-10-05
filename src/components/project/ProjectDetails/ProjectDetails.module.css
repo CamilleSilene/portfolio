@@ -1,0 +1,10 @@
+.projectBadge {
+    margin-right: 0.5rem;
+}
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 50%;
+}

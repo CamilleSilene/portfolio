@@ -1,11 +1,10 @@
-
-
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import styles from './ProjectCard.module.css'; 
 import { Link } from 'react-router-dom';
 
 function ProjectCard (props) {
+
   return (
     <Link to={`/project/${props.id}`} >
   <Card>
@@ -16,7 +15,7 @@ function ProjectCard (props) {
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      { props.tags.map((tag) => ( <Badge bg="primary" pill className={styles.projectBadge}>{tag}</Badge> ) ) }
+      { props.tags.map((tag) => ( <Badge key={tag} bg="primary" pill className={styles.projectBadge}>{tag}</Badge> ) ) }
     </Card.Footer>
   </Card>
   </Link>)

@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 
 import projects from "../../../../data/projects.json";
 import ProjectListItem from "./ProjectListItem";
-import ProjectStore from "../../../../stores/mongo/ProjectStore";
+import ProjectStore from "../../../../stores/api/ProjectStore";
 
 function ProjectList (props) {
 
