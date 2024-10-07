@@ -11,7 +11,6 @@ import Error from './pages/Error';
 import SignIn from './pages/SignIn';
 import ProjectList from './components/project/admin/ProjectList/ProjectList';
 import ProjectEdit from './components/project/admin/ProjectEdit/ProjectEdit';
-import Header from './components/layout/Header';
 
 function App() {
   const [user, setUser] = useState(null);

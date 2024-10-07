@@ -1,67 +1,74 @@
-
-import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 
 import ProjectListItem from "./ProjectListItem";
-import { useUser } from '../../../../hooks/useUser';
-import { useNavigate } from 'react-router-dom';
-import { APP_ROUTES } from '../../../../constants';
+import { useUser } from "../../../../hooks/useUser";
+import { useNavigate } from "react-router-dom";
+import { APP_ROUTES } from "../../../../constants";
+import { getProjects } from "../../../utils/projectStore";
+import Button from "react-bootstrap/esm/Button";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
-function ProjectList (props) {
-    const [projects, setProjects] = useState([]);
-
-    const navigate = useNavigate();
-    const { connectedUser, auth, userLoading } = useUser();
-    useEffect(() => {
-        if (!userLoading) {
-          if (!connectedUser || !auth) {
-            navigate(APP_ROUTES.SIGN_IN);
-          }
-        }
-      }, [connectedUser, auth, userLoading, navigate]);
-
-    function formatProjects (projectsArray) {
-        return projectsArray.map((project) => {
-          const newProject = { ...project };
-          // eslint-disable-next-line no-underscore-dangle
-          newProject.id = newProject._id;
-          return newProject;
-        });
+function ProjectList(props) {
+  const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
+  const { connectedUser, auth, userLoading } = useUser();
+  
+  useEffect(() => {
+    if (!userLoading) {
+      if (!connectedUser || !auth) {
+        navigate(APP_ROUTES.SIGN_IN);
       }
-      useEffect(() => {
-        axios( {
-              method: 'GET',
-              url: 'http://localhost:4000/api/project'
-            }).then((response) => formatProjects(response.data))
-            .then( (projects) => setProjects(projects));
-      },[]);
-
-    const handleDelete = (id) => {
-       // ProjectStore.deleteProject(id);
     }
+  }, [connectedUser, auth, userLoading, navigate]);
 
-    return (
-        <Container>
-            <h1>Liste des projects</h1>
+  useEffect(() => {
+    async function getProjectsList() {
+      const data = await getProjects();
+      if (data) {
+        setProjects(data);
+      }
+    }
+    getProjectsList();
+  }, []);
 
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Titre</th>
-                        <th colSpan="2">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { projects.map( (project) => 
-                        <ProjectListItem key={project.id} {...project} onDelete={ () => handleDelete(project.id) }/>
-                    ) }
-                </tbody>
-                </Table>
-        </Container>
-    )
-};
+  const handleDelete = (id) => {
+    // ProjectStore.deleteProject(id);
+  };
+
+  const handleCreate = () => {
+    navigate('/admin/project/create');
+  }
+  return (
+    <Container>
+      <h1>Liste des projects</h1>
+      <Row>
+        <Col>
+          <Button variant="primary" onClick={handleCreate}>Créer un Projet</Button>
+        </Col>
+      </Row>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Titre</th>
+            <th colSpan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projects.map((project) => (
+            <ProjectListItem
+              key={project.id}
+              {...project}
+              onDelete={() => handleDelete(project.id)}
+            />
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
+}
 
 export default ProjectList;

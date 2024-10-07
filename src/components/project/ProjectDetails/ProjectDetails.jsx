@@ -20,7 +20,7 @@ function ProjectDetails() {
         }
       }
       getProjectDetails();
-    }, []);
+    }, [id]);
 
     return (
     <Container>

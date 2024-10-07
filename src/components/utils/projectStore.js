@@ -22,7 +22,7 @@ export async function getProjects() {
       method: "GET",
       url: "http://localhost:4000/api/project",
     });
-    const project = formatProject(response.data);
+    const project = formatProjects(response.data);
     return project;
   } catch (err) {
     console.error(err);
@@ -31,15 +31,70 @@ export async function getProjects() {
 }
 
 export async function getProject(id) {
+  if(id !== undefined) {
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `http://localhost:4000/api/project/${id}`,
+      });
+      const project = formatProject(response.data);
+      return project;
+    } catch (err) {
+      console.error(err);
+      return undefined;
+    }
+  }
+
+}
+
+export async function updateProject(data, id) {
+  let newData;
+  const project = {
+    title: data.title,
+    description: data.description,
+    link: data.link,
+    github: data.github,
+    tags: data.tags.split(',')
+  }
+  newData = {...project};
   try {
-    const response = await axios({
-      method: "GET",
+    const newProject = await axios({
+      method: 'put',
       url: `http://localhost:4000/api/project/${id}`,
+      data: newData,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
     });
-    const projects = formatProjects(response.data);
-    return projects;
+    return newProject;
   } catch (err) {
     console.error(err);
-    return undefined;
+    return { error: true, message: err.message };
+  }
+}
+
+export async function createProject( data ) {
+  let newData;
+  const project = {
+    title: data.title,
+    description: data.description,
+    link: data.link,
+    github: data.github,
+    tags: data.tags.split(',')
+  }
+  newData = {...project};
+  try {
+    const newProject = await axios({
+      method: 'post',
+      url: `http://localhost:4000/api/project/`,
+      data: newData,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return newProject;
+  } catch (err) {
+    console.error(err);
+    return { error: true, message: err.message };
   }
 }

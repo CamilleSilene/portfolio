@@ -3,7 +3,6 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ProjectCard from "./ProjectCard/ProjectCard";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { getProjects } from "../utils/projectStore";
 
 function Projects() {
