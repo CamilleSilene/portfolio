@@ -10,6 +10,8 @@ import Col from 'react-bootstrap/esm/Col';
 import { useUser } from "../../../../hooks/useUser";
 import { APP_ROUTES } from "../../../../constants";
 import { createProject, getProject, updateProject } from "../../../utils/projectStore";
+import { useFilePreview } from "../../../../hooks/useFilePreview";
+import { FormGroup, Image } from "react-bootstrap";
 
 function ProjectEdit(props) {
   const { id } = useParams();
@@ -17,16 +19,19 @@ function ProjectEdit(props) {
 
   const navigate = useNavigate();
   const { connectedUser, auth, userLoading } = useUser();
-  const {
-    register, watch, formState, handleSubmit, reset,
-  } = useForm({
+  const { register, watch, formState, handleSubmit, reset, } = useForm({
     defaultValues: useMemo(() => ({
       title: project?.title
     }), [project]),
   });
+  
+  const file = watch(['cover']);
+  const [filePreview] = useFilePreview(file);
+
+  
   useEffect(() => {
     reset(project);
-  }, [project]);
+  }, [project, reset]);
   
   useEffect(() => {
     if (!userLoading) {
@@ -62,7 +67,7 @@ function ProjectEdit(props) {
       {project && <h1>Edition du Projet {project?.title}</h1>}
       <Row>
         <Col>
-          <Form onSubmit={handleSubmit(onSubmit)} method="POST">
+          <Form onSubmit={handleSubmit(onSubmit)} method="POST" encType="multipart/form-data">
             <Form.Group className="mb-3" controlId="formTitle">
               <Form.Label>Titre</Form.Label>
               <Form.Control name="title" type="text" placeholder="Titre" {...register('title')}/>
@@ -86,6 +91,26 @@ function ProjectEdit(props) {
                 Tags séparés par des virgules
               </Form.Text>
             </Form.Group>
+            <Form.Group>
+              {filePreview || project?.cover ? (
+                <>
+                <Row>
+                  <Col xs={6} md={4}>
+                    <Image src={filePreview ?? project?.cover} thumbnail={true} />
+                    <p>Modifier</p>
+                  </Col>
+                </Row>
+                </>
+              ) : (
+                <>
+                  <p>Ajouter une image</p>
+                </>
+              )}
+
+              <Form.Control {...register('cover')} type="file" id="cover" />
+            </Form.Group>
+            
+
             <Button variant="primary" type="submit">Submit</Button>
           </Form>
         </Col>
