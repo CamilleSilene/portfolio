@@ -83,18 +83,49 @@ export async function createProject( data ) {
     tags: data.tags.split(',')
   }
   newData = {...project};
+  
+  const bodyFormData = new FormData();
+  bodyFormData.append('project', JSON.stringify(newData));
+  bodyFormData.append('cover', data.cover[0]);
+
   try {
     const newProject = await axios({
       method: 'post',
       url: `http://localhost:4000/api/project/`,
-      data: newData,
+      data: bodyFormData,
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
     });
     return newProject;
   } catch (err) {
     console.error(err);
     return { error: true, message: err.message };
+  }
+}
+
+export async function getTags() {
+  try {
+    const response = await axios({
+      method: "GET",
+      url: "http://localhost:4000/api/project/tags",
+    });
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+}
+
+export async function getProjectsByTag(tag) {
+  try {
+    const response = await axios({
+      method: "GET",
+      url: `http://localhost:4000/api/project/tag/${tag}`,
+    });
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    return [];
   }
 }
