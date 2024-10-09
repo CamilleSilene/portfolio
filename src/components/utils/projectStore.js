@@ -54,7 +54,7 @@ export async function updateProject(data, id) {
     description: data.description,
     link: data.link,
     github: data.github,
-    tags: data.tags.split(',')
+    tags: data.tags
   }
   newData = {...project};
   try {
