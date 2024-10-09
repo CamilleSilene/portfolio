@@ -24,20 +24,20 @@ function ProjectDetails() {
 
     return (
     <Container>
-      <h2>{project.title}</h2>
+      <h2>{project?.title}</h2>
       <Row>
           <Col>
-            <p>{project.description}</p>
+            <p>{project?.description}</p>
           </Col>
           <Col>
-            <p>Lien : {project.link}</p>
-            <p>Github : {project.github}</p>
+            <p>Lien : {project?.link}</p>
+            <p>Github : {project?.github}</p>
           </Col>
       </Row>
-      { project.tags !== undefined &&
+      { project?.tags !== undefined &&
         <Row>
           <Col>
-            { project.tags.map((tag) => ( <Badge key={tag} bg="primary" pill className={styles.projectBadge}>{tag}</Badge> ) ) }
+            { project?.tags.map((tag) => ( <Badge key={tag} bg="primary" pill className={styles.projectBadge}>{tag}</Badge> ) ) }
           </Col>
         </Row>
       }
