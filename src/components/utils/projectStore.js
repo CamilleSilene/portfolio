@@ -80,7 +80,7 @@ export async function createProject( data ) {
     description: data.description,
     link: data.link,
     github: data.github,
-    tags: data.tags.split(',')
+    tags: data.tags
   }
   newData = {...project};
   
