@@ -59,6 +59,7 @@ function ProjectEdit(props) {
     } else {
       createProject(data);
     }
+    navigate('/admin')
   }
 
   return (
