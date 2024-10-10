@@ -7,11 +7,11 @@ function ProjectCard (props) {
 
   return (
     <Link to={`/project/${props.id}`} >
-  <Card>
-    <Card.Img variant="left" src={props.cover[0]} />
+  <Card className={ styles.card} >
+    <Card.Img variant="left" src={props.cover[0]} className={ styles.cardCover} />
     <Card.Body>
       <Card.Title>{props.title}</Card.Title>
-      <Card.Text>{props.description}
+      <Card.Text>{props.undertitle}
       </Card.Text>
     </Card.Body>
     <Card.Footer>

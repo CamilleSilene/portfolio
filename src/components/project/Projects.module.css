@@ -1,0 +1,12 @@
+.filter {
+    font-size: medium;
+    font-weight: 500;
+    margin: 3px;
+    text-decoration: none;
+    
+}
+
+.filter:hover {
+    cursor: pointer;
+    opacity: 50%;
+}

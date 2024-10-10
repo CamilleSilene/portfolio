@@ -8,3 +8,15 @@ a {
 a:hover {
     opacity: 50%;
 }
+.coverWrapper {
+    background-color: lightgray;
+    text-align: center;
+    
+}
+.cover {
+    border: 2px;
+}
+
+.description {
+    white-space: pre-wrap;
+}
