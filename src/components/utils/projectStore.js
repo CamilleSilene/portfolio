@@ -51,19 +51,25 @@ export async function updateProject(data, id) {
   let newData;
   const project = {
     title: data.title,
+    undertitle: data.undertitle,
     description: data.description,
     link: data.link,
     github: data.github,
     tags: data.tags
   }
   newData = {...project};
+  const bodyFormData = new FormData();
+  bodyFormData.append('project', JSON.stringify(newData));
+  bodyFormData.append('cover', data.cover[0]);
+
   try {
     const newProject = await axios({
       method: 'put',
       url: `http://localhost:4000/api/project/${id}`,
-      data: newData,
+      data: bodyFormData,
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'multipart/form-data'
       },
     });
     return newProject;
@@ -77,10 +83,11 @@ export async function createProject( data ) {
   let newData;
   const project = {
     title: data.title,
+    undertitle: data.undertitle,
     description: data.description,
     link: data.link,
     github: data.github,
-    tags: data.tags
+    tags: data.tags.split(',')
   }
   newData = {...project};
   
@@ -94,13 +101,28 @@ export async function createProject( data ) {
       url: `http://localhost:4000/api/project/`,
       data: bodyFormData,
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'multipart/form-data',
       },
     });
     return newProject;
   } catch (err) {
     console.error(err);
     return { error: true, message: err.message };
+  }
+}
+
+export async function deleteProject( id ) {
+  try {
+    await axios.delete(`http://localhost:4000/api/project/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return true;
+  } catch (err) {
+    console.error(err);
+    return false;
   }
 }
 
