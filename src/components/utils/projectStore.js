@@ -60,7 +60,10 @@ export async function updateProject(data, id) {
   newData = {...project};
   const bodyFormData = new FormData();
   bodyFormData.append('project', JSON.stringify(newData));
-  bodyFormData.append('cover', data.cover[0]);
+  
+  if (data.cover && data.cover.length > 0) {
+    bodyFormData.append('cover', data.cover[0]);// Ajoute le fichier seulement s'il y a une nouvelle image
+  }
 
   try {
     const newProject = await axios({
@@ -74,7 +77,7 @@ export async function updateProject(data, id) {
     });
     return newProject;
   } catch (err) {
-    console.error(err);
+    console.error('Erreur lors de la modification du projet:', err);
     return { error: true, message: err.message };
   }
 }
