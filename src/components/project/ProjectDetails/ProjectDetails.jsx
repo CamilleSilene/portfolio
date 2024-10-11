@@ -39,8 +39,8 @@ function ProjectDetails() {
             <p className={"lead text-center" + styles.description} >{project?.description.replace('\r', '<br/>')}</p>
           </Col>
           <Col>
-            { project?.link && <a href="{project?.link}" target="_blank" class="btn btn-outline-secondary mx-2"><i class="fab fa-github"></i> Démo</a> }
-            { project?.github && <a href="{project?.github}" target="_blank" class="btn btn-outline-secondary mx-2"><i class="fab fa-github"></i> Repo Github</a> }
+            { project?.link && <a href={project?.link} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i class="fab fa-github"></i> Démo</a> }
+            { project?.github && <a href={project?.github} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i class="fab fa-github"></i> Repo Github</a> }
           </Col>
       </Row>
       { project?.tags !== undefined &&
