@@ -1,6 +1,9 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-scroll';  // Import de Link depuis react-scroll
+import Project from "../project/Projects";
+import AboutMe from '../about/AboutMe';
 
 function Navigation() {
   return (
@@ -11,8 +14,27 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#about">About Me</Nav.Link>
-            <Nav.Link href="#projects">Projects</Nav.Link>
+                 {/* Utilisation de Link de react-scroll pour un scroll fluide */}
+            <Link 
+              to="aboutme-section"
+              className="nav-link" 
+              smooth={true} 
+              offset={-70} 
+              duration={500}
+            >
+              About Me
+            </Link>
+            
+            <Link 
+              to="project-section"
+              className="nav-link" 
+              smooth={true} 
+              offset={-70} 
+              duration={500}
+            >
+              Projects
+            </Link>
+            
             <Nav.Link href="http://localhost:4000/documents/CVDWBE.pdf" target="_blank">Mon CV</Nav.Link>
           </Nav>
         </Navbar.Collapse>

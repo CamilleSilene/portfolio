@@ -2,7 +2,7 @@ import { Col, Container, Image, Row } from "react-bootstrap";
 
 function AboutMe() {
     return (
-    <Container className="bg-light">
+    <Container id="aboutme-section" className="bg-light">
       <Row bsPrefix="row p-5" >
       <Col bsPrefix="col align-self-center" md={4} >
         <Image src="https://avatars.githubusercontent.com/u/164325518?v=4" fluid roundedCircle />

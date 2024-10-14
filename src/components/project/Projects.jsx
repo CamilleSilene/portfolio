@@ -42,7 +42,7 @@ function Projects() {
   }
 
   return (
-    <Container bsPrefix="container mt-5 p-5 bg-light">
+    <Container id="project-section" bsPrefix="container mt-5 p-5 bg-light">
       <h2 class="display-4 mb-5 text-center">Projects</h2>
       <Row bsPrefix="row m-5">
         <Col md={2}></Col>
