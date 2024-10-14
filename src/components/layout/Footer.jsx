@@ -7,7 +7,14 @@ const Footer = (props) => {
   return (
     <footer style={bgStyle} className="mt-auto py-5 text-center ">
       <Container>
-        {props.children}
+      <p>
+           Pour me contacter par mail, c’est par{' '}
+          <a href="mailto:pierrotcamille04@gmail.com">ici</a>.
+      </p>
+      <p>
+        Conçu et développé par Camille Pierrot © {new Date().getFullYear()}
+      </p>
+      
       </Container>
     </footer>
   );
