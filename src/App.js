@@ -1,7 +1,5 @@
 
 import './App.css';
-import { useEffect, useState } from 'react';
-import { useUser } from './hooks/useUser';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Layout from './components/layout/Layout';
@@ -13,11 +11,6 @@ import ProjectList from './components/project/admin/ProjectList/ProjectList';
 import ProjectEdit from './components/project/admin/ProjectEdit/ProjectEdit';
 
 function App() {
-  const [user, setUser] = useState(null);
-  const { connectedUser } = useUser();
-  useEffect(() => {
-    setUser(connectedUser);
-  }, [connectedUser]);
   return (
       <BrowserRouter>
         <Routes>
@@ -29,7 +22,7 @@ function App() {
           
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="/admin" element={<ProjectList />} />
-            <Route path="/admin/signin" element={<SignIn  setUser={setUser} />} />
+            <Route path="/admin/signin" element={<SignIn />} />
             <Route path="/admin/project/create" element={<ProjectEdit />} />
             <Route path="/admin/project/:id/edit" element={<ProjectEdit />} />
           </Route>

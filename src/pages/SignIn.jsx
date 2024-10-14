@@ -6,7 +6,6 @@ import axios from 'axios';
 import * as PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { storeInLocalStorage } from '../utils';
-import { useUser } from '../hooks/useUser';
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -16,23 +15,14 @@ import { API_ROUTES, APP_ROUTES } from '../constants';
 
 function SignIn({ setUser }) {
   const navigate = useNavigate();
-  const { connectedUser, authenticated, userLoading } = useUser();  // Utilisation de connectedUser
   
-  useEffect(() => {
-    // Si l'utilisateur est déjà connecté, redirection vers /admin
-    if (!userLoading && authenticated) {
-      navigate('/admin/');
-    }
-  }, [userLoading, authenticated, navigate]);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [notification, setNotification] = useState({ error: false, message: '' });
-  const [isLoading, setIsLoading] = useState(false);
 
   const signIn = async () => {
     try {
-      setIsLoading(true);  // Indique que la requête est en cours
 
       const response = await axios.post(API_ROUTES.SIGN_IN, {
         email,
@@ -59,7 +49,6 @@ function SignIn({ setUser }) {
       console.error('Erreur pendant la connexion: ', err);
       setNotification({ error: true, message: 'Connexion échouée. Veuillez réessayer.' });
     } finally {
-      setIsLoading(false);  // Remet l'état de chargement à false après la requête
     }
   };
 

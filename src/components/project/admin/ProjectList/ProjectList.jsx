@@ -3,9 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Table from "react-bootstrap/Table";
 
 import ProjectListItem from "./ProjectListItem";
-import { useUser } from "../../../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
-import { APP_ROUTES } from "../../../../constants";
 import { deleteProject, getProjects } from "../../../utils/projectStore";
 import Button from "react-bootstrap/esm/Button";
 import Row from "react-bootstrap/esm/Row";
@@ -14,17 +12,7 @@ import Col from "react-bootstrap/esm/Col";
 function ProjectList(props) {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate();
-  const { connectedUser, auth, userLoading } = useUser();
   
-  useEffect(() => {
-    console.log("projectList",connectedUser, auth)
-    if (!userLoading) {
-      if (!connectedUser || !auth) {
-        navigate(APP_ROUTES.SIGN_IN);
-      }
-      }
-  }, [connectedUser, auth, userLoading, navigate]);
-
   useEffect(() => {
     async function getProjectsList() {
       const data = await getProjects();
