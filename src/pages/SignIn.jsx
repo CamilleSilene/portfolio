@@ -1,7 +1,7 @@
 /*
 eslint linebreak-style: ["error", "windows"]
 */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -16,38 +16,50 @@ import { API_ROUTES, APP_ROUTES } from '../constants';
 
 function SignIn({ setUser }) {
   const navigate = useNavigate();
-  const { user, authenticated } = useUser();
-  if (user || authenticated) {
-    navigate(APP_ROUTES.HOME);
-  }
+  const { connectedUser, authenticated, userLoading } = useUser();  // Utilisation de connectedUser
+  
+  useEffect(() => {
+    // Si l'utilisateur est déjà connecté, redirection vers /admin
+    if (!userLoading && authenticated) {
+      navigate('/admin/');
+    }
+  }, [userLoading, authenticated, navigate]);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [notification, setNotification] = useState({ error: false, message: '' });
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   const signIn = async () => {
     try {
-      const response = await axios({
-        method: 'post',
-        url: API_ROUTES.SIGN_IN,
-        data: {
-          email,
-          password,
-        },
+      setIsLoading(true);  // Indique que la requête est en cours
+
+      const response = await axios.post(API_ROUTES.SIGN_IN, {
+        email,
+        password,
       });
-      if (!response.data.token) {
-        setNotification({ error: true, message: 'Une erreur est survenue' });
-        console.log('Something went wrong during signing in: ', response);
+
+      if (!response.data.token || !response.data.userId) {
+        setNotification({ error: true, message: 'Une erreur est survenue lors de la connexion.' });
+        console.error('Erreur lors de la connexion: ', response);
       } else {
-        console.log(response.data)
-        storeInLocalStorage(response.data.token, response.data.userId);
-        setUser(response.data);
+        // Stockage du token et de l'utilisateur dans le localStorage
+        storeInLocalStorage('token', response.data.token);
+        storeInLocalStorage('userId', response.data.userId);
+
+        // Met à jour l'état utilisateur avec setUser si nécessaire
+        if (setUser) {
+          setUser(response.data);
+        }
+
+        // Redirection après connexion réussie
         navigate('/admin/');
       }
     } catch (err) {
-      console.log(err);
-      setNotification({ error: true, message: err.message });
-      console.log('Some error occured during signing in: ', err);
+      console.error('Erreur pendant la connexion: ', err);
+      setNotification({ error: true, message: 'Connexion échouée. Veuillez réessayer.' });
+    } finally {
+      setIsLoading(false);  // Remet l'état de chargement à false après la requête
     }
   };
 

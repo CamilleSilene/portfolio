@@ -7,8 +7,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 
-import { useUser } from "../../../../hooks/useUser";
-import { APP_ROUTES } from "../../../../constants";
 import { createProject, getProject, updateProject } from "../../../utils/projectStore";
 import { useFilePreview } from "../../../../hooks/useFilePreview";
 import { FormGroup, Image } from "react-bootstrap";
@@ -16,9 +14,8 @@ import { FormGroup, Image } from "react-bootstrap";
 function ProjectEdit(props) {
   const { id } = useParams();
   const [ project, setProject ] = useState();
-
   const navigate = useNavigate();
-  const { connectedUser, auth, userLoading } = useUser();
+
   const { register, watch, formState, handleSubmit, reset, } = useForm({
     defaultValues: useMemo(() => ({
       title: project?.title
@@ -28,19 +25,10 @@ function ProjectEdit(props) {
   const file = watch(['cover']);
   const [filePreview] = useFilePreview(file);
 
-  
   useEffect(() => {
     reset(project);
   }, [project, reset]);
-  
-  useEffect(() => {
-    if (!userLoading) {
-      if (!connectedUser || !auth) {
-        navigate(APP_ROUTES.SIGN_IN);
-      }
-    }
-  }, [connectedUser, auth, userLoading, navigate, id]);
-  
+
   useEffect(() => {
     if(id !== undefined) {
       async function getProjectDetails() {
@@ -72,6 +60,10 @@ function ProjectEdit(props) {
             <Form.Group className="mb-3" controlId="formTitle">
               <Form.Label>Titre</Form.Label>
               <Form.Control name="title" type="text" placeholder="Titre" {...register('title')}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formTitle">
+              <Form.Label>Sous-titre</Form.Label>
+              <Form.Control name="undertitle" type="text" placeholder="Sous-titre" {...register('undertitle')}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formDescription">
               <Form.Label>Description</Form.Label>
