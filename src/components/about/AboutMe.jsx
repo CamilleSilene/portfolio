@@ -12,7 +12,7 @@ function AboutMe() {
             <p className="lead text-center">
               Camille Pierrot, développeuse fullstack avec de l'appétence pour le backend. <br/>
               Après plusieurs aventures dans le monde du spectacle vivant, je me suis tournée vers celui du developpement web en 2024 et ai obtenu mon titre RNCP Developpement web chez OpenClassRooms.<br/>
-              Le monde du web est vaste, dynamique et en perpétuelle évolution. J'adore le découvrir chaque jour.
+              Je me plonge dans l'univers du web avec enthousiasme, en développant des projets qui combinent créativité et fonctionnalité. Mon parcours est en pleine évolution, et je suis impatiente d’en apprendre encore plus chaque jour..
               
             </p>
         </Col>
