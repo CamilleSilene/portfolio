@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_ROUTES } from "../../constants";
 
 function formatProjects(projectsArray) {
   return projectsArray.map((project) => {
@@ -20,7 +21,7 @@ export async function getProjects() {
   try {
     const response = await axios({
       method: "GET",
-      url: "http://localhost:4000/api/project",
+      url: API_ROUTES.PROJECT_URL,
     });
     const project = formatProjects(response.data);
     return project;
@@ -35,7 +36,7 @@ export async function getProject(id) {
     try {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:4000/api/project/${id}`,
+        url: `${API_ROUTES.PROJECT_URL}/${id}`,
       });
       const project = formatProject(response.data);
       return project;
@@ -68,7 +69,7 @@ export async function updateProject(data, id) {
   try {
     const newProject = await axios({
       method: 'put',
-      url: `http://localhost:4000/api/project/${id}`,
+      url: `${API_ROUTES.PROJECT_URL}/${id}`,
       data: bodyFormData,
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -101,7 +102,7 @@ export async function createProject( data ) {
   try {
     const newProject = await axios({
       method: 'post',
-      url: `http://localhost:4000/api/project/`,
+      url: API_ROUTES.PROJECT_URL,
       data: bodyFormData,
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -117,7 +118,7 @@ export async function createProject( data ) {
 
 export async function deleteProject( id ) {
   try {
-    await axios.delete(`http://localhost:4000/api/project/${id}`, {
+    await axios.delete(`${API_ROUTES.PROJECT_URL}/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -133,7 +134,7 @@ export async function getTags() {
   try {
     const response = await axios({
       method: "GET",
-      url: "http://localhost:4000/api/project/tags",
+      url: API_ROUTES.PROJECT_TAGS_URL,
     });
     return response.data;
   } catch (err) {
@@ -146,7 +147,7 @@ export async function getProjectsByTag(tag) {
   try {
     const response = await axios({
       method: "GET",
-      url: `http://localhost:4000/api/project/tag/${tag}`,
+      url: `${API_ROUTES.PROJECT_TAG_URL}/${tag}`,
     });
     return response.data;
   } catch (err) {

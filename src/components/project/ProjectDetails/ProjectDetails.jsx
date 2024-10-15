@@ -7,6 +7,7 @@ import Badge from "react-bootstrap/esm/Badge";
 import styles from './ProjectDetails.module.css'; 
 import { getProject } from "../../utils/projectStore";
 import { Card } from "react-bootstrap";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 
 function ProjectDetails() {
     const { id } = useParams();
@@ -39,8 +40,8 @@ function ProjectDetails() {
             <p className={"lead text-center" + styles.description} >{project?.description.replace('\r', '<br/>')}</p>
           </Col>
           <Col>
-            { project?.link && <a href={project?.link} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i class="fab fa-github"></i> Démo</a> }
-            { project?.github && <a href={project?.github} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i class="fab fa-github"></i> Repo Github</a> }
+            { project?.link && <a href={project?.link} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-desktop"></i>&nbsp;Démo</a> }
+            { project?.github && <a href={project?.github} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-github"></i>&nbsp;Repo Github</a> }
           </Col>
       </Row>
       { project?.tags !== undefined &&

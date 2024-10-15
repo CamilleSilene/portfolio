@@ -7,6 +7,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 
+import { APP_ROUTES } from "../../../../constants";
+
 import { createProject, getProject, updateProject } from "../../../utils/projectStore";
 import { useFilePreview } from "../../../../hooks/useFilePreview";
 import { FormGroup, Image } from "react-bootstrap";
@@ -47,7 +49,7 @@ function ProjectEdit(props) {
     } else {
       createProject(data);
     }
-    navigate('/admin')
+    navigate(APP_ROUTES.ADMIN)
   }
 
   return (

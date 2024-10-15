@@ -9,6 +9,8 @@ import Button from "react-bootstrap/esm/Button";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 
+import { APP_ROUTES } from "../../../../constants";
+
 function ProjectList(props) {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate();
@@ -28,7 +30,7 @@ function ProjectList(props) {
   };
 
   const handleCreate = () => {
-    navigate('/admin/project/create');
+    navigate(APP_ROUTES.ADMIN_CREATE);
   }
   return (
     <Container>

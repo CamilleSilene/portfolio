@@ -1,6 +1,8 @@
 import { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { API_ROUTES, APP_ROUTES } from "../constants";
+
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -9,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const loginAction = async (data) => {
     try {
-      const response = await fetch("http://localhost:4000/api/auth/login", {
+      const response = await fetch(API_ROUTES.LOGIN_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,7 +24,7 @@ const AuthProvider = ({ children }) => {
         setUser(res.userId);
         setToken(res.token);
         localStorage.setItem("token", res.token);
-        navigate("/admin");
+        navigate(APP_ROUTES.ADMIN);
         return;
       }
       throw new Error(res.message);
@@ -35,7 +37,7 @@ const AuthProvider = ({ children }) => {
     setUser(null);
     setToken("");
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate(APP_ROUTES.LOGIN);
   };
 
   return (
