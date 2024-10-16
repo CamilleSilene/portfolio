@@ -20,12 +20,12 @@ function Home( ) {
 
 
     return (
-        <div className="container-fluid">
+        <>
             <Header />
             <AboutMe />
             <div id="stars" style={{'boxShadow': stars.join(','), ':after': stars.join(',')}}></div>
             <Project />
-        </div>
+        </>
     );
 }
 

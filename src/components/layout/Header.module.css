@@ -1,0 +1,59 @@
+.fs-sm {
+    font-size: 14px;
+  }
+  
+  @media (min-width: 576px) {
+    /* Taille pour écrans ≥ 576px */
+    .fs-sm {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /* Taille pour écrans ≥ 768px */
+    .fs-sm {
+      font-size: 20px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    /* Taille pour écrans ≥ 992px */
+    .fs-sm {
+      font-size: 25px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    /* Taille pour écrans ≥ 1200px */
+    .fs-sm {
+      font-size: 30px;
+    }
+  }
+  
+
+  /* Icône par défaut */
+.icon-responsive {
+    font-size: 1rem;
+  }
+  
+  /* Pour les écrans ≥ 768px (md) */
+  @media (min-width: 768px) {
+    .icon-responsive {
+      font-size: 0.5rem; /* Par exemple fa-2x pour les écrans moyens et plus */
+    }
+  }
+  
+  /* Pour les écrans ≥ 992px (lg) */
+  @media (min-width: 992px) {
+    .icon-responsive {
+      font-size: 0.8rem; /* Augmentation de la taille pour les grands écrans */
+    }
+  }
+  
+  /* Pour les écrans ≥ 1200px (xl) */
+  @media (min-width: 1200px) {
+    .icon-responsive {
+      font-size: 1.5rem;
+    }
+  }
+  

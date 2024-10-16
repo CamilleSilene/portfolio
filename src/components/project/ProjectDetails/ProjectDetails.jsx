@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Badge from "react-bootstrap/esm/Badge";
 import styles from './ProjectDetails.module.css'; 
 import { getProject } from "../../utils/projectStore";
-import { Card } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 
 function ProjectDetails() {
@@ -27,19 +27,30 @@ function ProjectDetails() {
     return (
       <>
     <Container fluid className={styles.coverWrapper}>
-      <Card.Img variant="left" src={project?.cover[0]} fluid/>
+      <Image src={project?.cover[0]} fluid />
     </Container>
-    <Container>
+    <Container fluid>
       <Row bsPrefix="row p-3">
         <Col>
-          <h2>{project?.title}</h2>
+          <h1>{project?.title}</h1>
         </Col>
       </Row>
       <Row>
-          <Col>
-            <p className={"lead text-center" + styles.description} >{project?.description.replace('\r', '<br/>')}</p>
+          <Col md={6}>
+            <p className={"lead text-start text-wrap text-break word-wrap" + styles.description} >
+              {
+                project?.description.split('\n').map(function( item, idx) {
+                  return (
+                      <span key={idx}>
+                        {item}
+                        <br/>
+                      </span>
+                  )
+                })
+              }
+            </p>
           </Col>
-          <Col>
+          <Col md={6}>
             { project?.link && <a href={project?.link} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-desktop"></i>&nbsp;Démo</a> }
             { project?.github && <a href={project?.github} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-github"></i>&nbsp;Repo Github</a> }
           </Col>

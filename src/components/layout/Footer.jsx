@@ -1,12 +1,13 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import styles from './Footer.module.css'; 
 
 const Footer = (props) => {
-  const bgStyle = { backgroundColor: "#f5f5f5" };
 
+  const myClasses = `container-fluid mt-auto py-5 text-center ${styles.myFooter}`;
   return (
-    <footer style={bgStyle} className="mt-auto py-5 text-center ">
-      <Container>
+    <footer className={ myClasses}>
+      <Container fluid>
       <p>
            Pour me contacter par mail, c’est par{' '}
           <a href="mailto:pierrotcamille04@gmail.com">ici</a>.

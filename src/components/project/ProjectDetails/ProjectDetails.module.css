@@ -9,7 +9,7 @@ a:hover {
     opacity: 50%;
 }
 .coverWrapper {
-    background-color: lightgray;
+    background-color: transparent;
     text-align: center;
     
 }
@@ -19,4 +19,5 @@ a:hover {
 
 .description {
     white-space: pre-wrap;
+    text-align: justify;
 }
