@@ -17,8 +17,8 @@ function Header() {
       <Row>
       <Col></Col>
       <Col className="col-md-6 d-flex justify-content-center align-items-center pb-5">
-          <a href="https://github.com/CamilleSilene" target="_blank" class="btn btn-lg btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-github fa-2x"></i></a>
-          <a href="https://www.linkedin.com/in/camille-pierrot/" target="_blank" class="btn btn-lg btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-linkedin fa-2x" ></i></a>
+          <a href="https://github.com/CamilleSilene" target="_blank" className="btn btn-lg btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-github fa-2x"></i></a>
+          <a href="https://www.linkedin.com/in/camille-pierrot/" target="_blank" className="btn btn-lg btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-linkedin fa-2x" ></i></a>
           </Col>
           <Col></Col>
       </Row>

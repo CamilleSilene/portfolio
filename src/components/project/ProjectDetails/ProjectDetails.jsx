@@ -51,8 +51,8 @@ function ProjectDetails() {
             </p>
           </Col>
           <Col md={6}>
-            { project?.link && <a href={project?.link} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-desktop"></i>&nbsp;Démo</a> }
-            { project?.github && <a href={project?.github} target="_blank" class="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-github"></i>&nbsp;Repo Github</a> }
+            { project?.link && <a href={project?.link} target="_blank" className="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-desktop"></i>&nbsp;Démo</a> }
+            { project?.github && <a href={project?.github} target="_blank" className="btn btn-outline-secondary mx-2" rel="noreferrer"><i className="fa fa-github"></i>&nbsp;Repo Github</a> }
           </Col>
       </Row>
       { project?.tags !== undefined &&

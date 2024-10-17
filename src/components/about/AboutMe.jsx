@@ -8,7 +8,7 @@ function AboutMe() {
         <Image src="https://avatars.githubusercontent.com/u/164325518?v=4" fluid roundedCircle />
       </Col>
         <Col  md={8}>
-            <h2 className="display-4 mb-5 text-center">About Me</h2>
+            <h2 className="display-4 mb-5 text-center">A propos</h2>
             <p className="lead text-center">
               Camille Pierrot, développeuse fullstack avec de l'appétence pour le backend. <br/>
               Après plusieurs aventures dans le monde du spectacle vivant, je me suis tournée vers celui du developpement web en 2024 et ai obtenu mon titre RNCP Developpement web chez OpenClassRooms.<br/>

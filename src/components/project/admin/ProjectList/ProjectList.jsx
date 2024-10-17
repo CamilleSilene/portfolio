@@ -34,7 +34,7 @@ function ProjectList(props) {
   }
   return (
     <Container>
-      <h1>Liste des projects</h1>
+      <h1>Liste des projets</h1>
       <Row>
         <Col>
           <Button variant="primary" onClick={handleCreate}>Créer un Projet</Button>

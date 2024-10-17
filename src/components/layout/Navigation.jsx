@@ -13,7 +13,7 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/">Accueil</Nav.Link>
                  {/* Utilisation de Link de react-scroll pour un scroll fluide */}
             <Link 
               to="aboutme-section"
@@ -22,7 +22,7 @@ function Navigation() {
               offset={-70} 
               duration={500}
             >
-              About Me
+              A propos
             </Link>
             
             <Link 
@@ -32,7 +32,7 @@ function Navigation() {
               offset={-70} 
               duration={500}
             >
-              Projects
+              Projets
             </Link>
             
             <Nav.Link href="http://localhost:4000/documents/CVDWBE.pdf" target="_blank">Mon CV</Nav.Link>
