@@ -35,7 +35,7 @@ function Navigation() {
               Projets
             </Link>
             
-            <Nav.Link href="http://localhost:4000/documents/CVDWBE.pdf" target="_blank">Mon CV</Nav.Link>
+            <Nav.Link href="/documents/CVDWBF.pdf" target="_blank">Mon CV</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
